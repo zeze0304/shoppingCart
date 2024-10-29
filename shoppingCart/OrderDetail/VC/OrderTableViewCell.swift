@@ -33,6 +33,6 @@ class OrderTableViewCell: UITableViewCell {
         self.addLabel.text = "Add: \(viewModel.add?.joined(separator: ", ") ?? "")"
         self.amountLabel.text = "Quantity: \(viewModel.amount ?? "")"
         self.priceLabel.text = "Price: $\(viewModel.price ?? "")"
+        self.priceLabel.textColor = .red
     }
-    
 }

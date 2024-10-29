@@ -32,9 +32,21 @@
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ngf-Jr-N0c">
                                 <rect key="frame" x="0.0" y="669" width="375" height="60"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thank you for your order" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fzM-GS-utu">
+                                        <rect key="frame" x="16" y="16" width="343" height="28"/>
+                                        <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
                                 <color key="backgroundColor" systemColor="systemYellowColor"/>
                                 <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="fzM-GS-utu" secondAttribute="bottom" constant="16" id="0au-dZ-loO"/>
+                                    <constraint firstItem="fzM-GS-utu" firstAttribute="top" secondItem="Ngf-Jr-N0c" secondAttribute="top" constant="16" id="8PP-dL-ju5"/>
+                                    <constraint firstAttribute="trailing" secondItem="fzM-GS-utu" secondAttribute="trailing" constant="16" id="b9W-um-tIn"/>
                                     <constraint firstAttribute="height" constant="60" id="rgb-VT-C4K"/>
+                                    <constraint firstItem="fzM-GS-utu" firstAttribute="leading" secondItem="Ngf-Jr-N0c" secondAttribute="leading" constant="16" id="yzj-KV-qKI"/>
                                 </constraints>
                             </view>
                         </subviews>

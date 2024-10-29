@@ -98,28 +98,7 @@ class DrinkDetailViewController: UIViewController {
     }
     
     @IBAction func addToCart(_ sender: Any) {
-        
-        guard let orderData = createOrderData() else {
-            print("Failed to create order data")
-            return
-        }
-        
-        let singleOrderData = CreateOrderDrink(records: [orderData])
-        
-        // POST
-        MenuViewController.shared.postOrder(orderData: singleOrderData) { result in
-            switch result {
-            case .success(let createOrderResponse):
-
-                NotificationCenter.default.post(name: NSNotification.Name("OrderUpdated"), object: nil)
-                
-                print(createOrderResponse)
-            case .failure(let error):
-                print(error)
-            }
-        }
-        
-        self.dismiss(animated: true)
+        showAlert()
     }
     
     @IBAction func onTouchplus(_ sender: Any) {
@@ -251,5 +230,33 @@ extension DrinkDetailViewController {
     private func setUp() {
         amountLabel.text = "1"
         priceLabel.text = "$-"
+    }
+    
+    private func showAlert() {
+    let alert = UIAlertController(title: "Are you sure you want to Add?", message: "Press No if you haven't finished", preferredStyle: .alert)
+    alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
+    alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { action in
+        guard let orderData = self.createOrderData() else {
+            print("Failed to create order data")
+            return
+        }
+        
+        let singleOrderData = CreateOrderDrink(records: [orderData])
+        
+        // POST
+        MenuViewController.shared.postOrder(orderData: singleOrderData) { result in
+            switch result {
+            case .success(let createOrderResponse):
+
+                NotificationCenter.default.post(name: NSNotification.Name("OrderUpdated"), object: nil)
+                
+                print(createOrderResponse)
+            case .failure(let error):
+                print(error)
+            }
+        }
+        self.dismiss(animated: true)
+    }))
+    present(alert, animated: true, completion: nil)
     }
 }
